@@ -25,9 +25,7 @@ class MultiplyController {
     private final ObjectMapper objectMapper;
 
     public MultiplyController() {
-        // Initialize Lambda client with region and credentials from environment variables
         this.lambdaClient = LambdaClient.builder()
-                .region(Region.AP_SOUTH_1) // Replace with your region
                 .build();
         this.objectMapper = new ObjectMapper();
     }
