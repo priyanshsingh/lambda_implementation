@@ -24,9 +24,6 @@ class MultiplyController {
     private final LambdaClient lambdaClient;
     private final ObjectMapper objectMapper;
 
-    String accessKeyId = "AKIAUMYCILJMFCZI3EPG";
-    String secretAccessKey = "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";
-
     public MultiplyController() {
         // Initialize Lambda client with region and credentials from environment variables
         this.lambdaClient = LambdaClient.builder()
