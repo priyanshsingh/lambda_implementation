@@ -4,8 +4,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
-import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
-import software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.core.SdkBytes;
 import software.amazon.awssdk.regions.Region;
@@ -24,8 +22,14 @@ class MultiplyController {
     private final LambdaClient lambdaClient;
     private final ObjectMapper objectMapper;
 
+    String accessKeyId = "AKIAUMYCILJMFCZI3EPG";
+    String secretAccessKey = "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";
+
     public MultiplyController() {
+        // Initialize Lambda client with region and credentials from environment variables
         this.lambdaClient = LambdaClient.builder()
+                .region(Region.AP_SOUTH_1) // Replace with your region
+                .credentialsProvider(StaticCredentialsProvider.create(AwsBasicCredentials.create(accessKeyId, secretAccessKey)))
                 .build();
         this.objectMapper = new ObjectMapper();
     }
