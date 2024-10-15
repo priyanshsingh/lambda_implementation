@@ -28,7 +28,6 @@ class MultiplyController {
         // Initialize Lambda client with region and credentials from environment variables
         this.lambdaClient = LambdaClient.builder()
                 .region(Region.AP_SOUTH_1) // Replace with your region
-                .credentialsProvider(StaticCredentialsProvider.create(AwsBasicCredentials.create(accessKeyId, secretAccessKey)))
                 .build();
         this.objectMapper = new ObjectMapper();
     }
